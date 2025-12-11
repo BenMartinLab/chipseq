@@ -135,7 +135,8 @@ nfcore-chipseq.sh -profile alliance_canada \
     --outdir output \
     --fasta $genome.fa \
     --gtf $genome.gtf \
-    --bowtie2_index bowtie2/$genome
+    --aligner bowtie2 \
+    --bowtie2_index bowtie2/$genome.1.bt2
 ```
 
 ## Run the nf-core pipeline on Fir
