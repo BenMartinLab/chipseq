@@ -83,6 +83,13 @@ genome=hg38-spike-dm6
 spike=dm6
 ```
 
+> [!IMPORTANT]
+> Change `100` by the actual length of the reads.
+
+```shell
+read_length=100
+```
+
 ## Run the nf-core pipeline on Rorqual or Narval
 
 ### Create tmux session
@@ -151,7 +158,8 @@ sbatch nfcore-chipseq.sh -profile alliance_canada \
     --outdir output \
     --fasta $genome.fa \
     --gtf $genome.gtf \
-    --bowtie2_index bowtie2/$genome
+    --bowtie2_index bowtie2/$genome \
+    --read_length $read_length
 ```
 
 ## Computing scale factors
