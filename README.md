@@ -101,8 +101,8 @@ sbatch nfcore-chipseq.sh -profile alliance_canada \
 
 ```shell
 sbatch scale-factors.sh \
-    --bam output/star_salmon/*.bam \
-    --output output/star_salmon/scale-factors.txt \
+    --bam output/bowtie2/merged_library/*.bam \
+    --output output/bowtie2/merged_library/scale-factors.txt \
     --samplesheet $samplesheet \
     --spike_fasta $spike.fa \
     --mean
