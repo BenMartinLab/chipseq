@@ -4,10 +4,6 @@ This repository contains scripts to analyse ChIP-seq data using [nf-core pipelin
 
 To install the scripts on Alliance Canada servers and download genomes, see [INSTALL.md](INSTALL.md)
 
-### TODO
-
-- [ ] Add Genome Coverage using middle of fragments and no scaling.
-
 ### Steps
 
 1. [Transfer data to scratch](#Transfer-data-to-scratch)
@@ -109,6 +105,14 @@ sbatch scale-factors.sh \
 ```
 
 ## Genome coverage
+
+Create BigWig containing middle base fragment counts.
+
+```shell
+sbatch --array=$samples_array fragment-counts.sh \
+    -s $samplesheet \
+    -g $genome.chrom.sizes
+```
 
 Genome coverage using scale factors based on sequencing depth.
 
