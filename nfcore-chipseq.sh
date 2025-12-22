@@ -13,5 +13,5 @@ fi
 source "${script_path}/nfcore-modules.sh"
 
 echo "Launching nf-core pipeline ${script_path}/nf-core-chipseq_2.1.0/2_1_0"
-nextflow run "${script_path}/nf-core-chipseq_2.1.0/2_1_0/" \
+nextflow run "${script_path}/nf-core-chipseq_2.1.0/2_1_0/" -c "${script_path}/nextflow.config" \
     "$@"
