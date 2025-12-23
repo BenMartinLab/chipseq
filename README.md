@@ -74,10 +74,10 @@ spike=dm6
 ```
 
 > [!IMPORTANT]
-> Change `100` by the actual length of the reads.
+> Change `50` by the actual length of the reads.
 
 ```shell
-read_length=100
+read_length=50
 ```
 
 ## Run the nf-core pipeline
