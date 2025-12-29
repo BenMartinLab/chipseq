@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-bmartin
 #SBATCH --time=12:00:00
-#SBATCH --cpus-per-task=40
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=40G
 #SBATCH --output=fasterq-dump-%A.out
 
