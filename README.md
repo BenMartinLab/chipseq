@@ -7,8 +7,9 @@ To install the scripts on Alliance Canada servers and download genomes, see [INS
 ### Steps
 
 1. [Transfer data to scratch](#Transfer-data-to-scratch)
+   1. [Download test data (Optional)](#Download-test-data-Optional)
 2. [Prepare working environment](#Prepare-working-environment)
-    1. [Set additional variables](#Set-additional-variables)
+   1. [Set additional variables](#Set-additional-variables)
 3. [Run the nf-core pipeline](#Run-the-nf-core-pipeline)
 4. [Computing scale factors](#Computing-scale-factors)
 5. [Genome coverage](#Genome-coverage)
@@ -29,6 +30,10 @@ There are many ways to transfer data to the server. Here are some suggestions.
 
 * Use an FTP software like [WinSCP](https://winscp.net) (Windows), [Cyberduck](https://cyberduck.io) (Mac), [FileZilla](https://filezilla-project.org).
 * Use command line tools like `rsync` or `scp`.
+
+### Download test data (Optional)
+
+See [test data README page](test-data.md).
 
 ## Prepare working environment
 
