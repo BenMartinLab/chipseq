@@ -40,13 +40,7 @@ See [test data README page](test-data.md).
 Add ChIP-seq scripts folder to your PATH.
 
 ```shell
-export PATH=~/projects/def-bmartin/scripts/chipseq:$PATH
-```
-
-For Rorqual server, use
-
-```shell
-export PATH=~/links/projects/def-bmartin/scripts/chipseq:$PATH
+export PATH=/project/def-bmartin/scripts/chipseq:$PATH
 ```
 
 ### Set additional variables
