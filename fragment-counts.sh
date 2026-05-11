@@ -31,7 +31,7 @@ suffix=.counts
 # Usage function
 usage() {
   echo
-  echo "Usage: genome-coverage.sh [-i int] [-s samplesheet.csv] [-g hg38.chrom.sizes] " \
+  echo "Usage: fragment-counts.sh [-i int] [-s samplesheet.csv] [-g hg38.chrom.sizes] " \
        "[-o output/star_salmon] [-f .counts]"
   echo "  -i: Index of sample in samplesheet (default: 1 or SLURM_ARRAY_TASK_ID+1 if present)"
   echo "  -s: Samplesheet file (default: samplesheet.csv)"

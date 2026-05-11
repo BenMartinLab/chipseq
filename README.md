@@ -12,8 +12,9 @@ To install the scripts on Alliance Canada servers and download genomes, see [INS
    1. [Set additional variables](#Set-additional-variables)
 3. [Run the nf-core pipeline](#Run-the-nf-core-pipeline)
 4. [Computing scale factors](#Computing-scale-factors)
-5. [Genome coverage](#Genome-coverage)
-6. [Split BAM (Optional)](#Split-BAM-Optional)
+5. [Fragment counts](#Fragment-counts)
+6. [Genome coverage](#Genome-coverage)
+7. [Split BAM (Optional)](#Split-BAM-Optional)
 
 ## Transfer data to scratch
 
@@ -103,7 +104,7 @@ sbatch scale-factors.sh \
     --mean
 ```
 
-## Genome coverage
+## Fragment counts
 
 Create BigWig containing middle base fragment counts.
 
@@ -112,6 +113,8 @@ sbatch --array=$samples_array fragment-counts.sh \
     -s $samplesheet \
     -g $genome.chrom.sizes
 ```
+
+## Genome coverage
 
 Genome coverage using scale factors based on sequencing depth.
 
