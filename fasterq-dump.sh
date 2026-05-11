@@ -15,11 +15,27 @@ then
   module load sra-toolkit/3.0.9
 fi
 
-awk -F ',' 'NR > 1 {print $8}' samplesheet.csv | parallel -t fasterq-dump --threads 2
-find ./SRR*.fastq | parallel -t gzip
-rename _1.fastq.gz _R1.fastq.gz *.fastq.gz
-rename _2.fastq.gz _R2.fastq.gz *.fastq.gz
-awk -F ',' 'NR > 1 {print $8"\n"$2}' samplesheet.csv | parallel -N 2 mv "{1}_R1.fastq.gz" "{2}"
-awk -F ',' 'NR > 1 {print $8"\n"$3}' samplesheet.csv | parallel -N 2 mv "{1}_R2.fastq.gz" "{2}"
+samplesheet=${1:-samplesheet.csv}
 
-rm -r SRR*
+# Validating arguments.
+if ! [[ -f "$samplesheet" ]]
+then
+  >&2 echo "Error: samplesheet file '$samplesheet' does not exists."
+  usage
+  exit 1
+fi
+
+srr_column=$(awk -F ',' \
+    'NR == 1 {for (i = 1; i <= NF; i++) if ($i == "srr") {print i; exit(0)}}' \
+    "$samplesheet")
+if [[ -z "$srr_column" ]]
+then
+  >&2 echo "Error: no 'srr' column found in samplesheet $samplesheet."
+  exit 1
+fi
+
+awk -F ',' -v srr_column="$srr_column" 'NR > 1 {print $srr_column}' "$samplesheet" \
+    | parallel -t fasterq-dump --threads 2
+find ./SRR*.fastq | parallel -t gzip
+
+find . -maxdepth 1 -type d -name "SRR*" -exec rm -r {} \;

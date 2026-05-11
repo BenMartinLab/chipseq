@@ -28,10 +28,10 @@ bash prefetch.sh
 After running `prefetch.sh` completes, you should see the following message for each sample:
 `Database 'SRR29290337.sra' is consistent`.
 
-If you don't see this message for each sample, or you see an error, you can just restart `prefetch.sh` using the previous command -
+If you don't see this message for all samples, or you see an error, you can just restart `prefetch.sh` using the previous command -
 `bash prefetch.sh`.
 
-Once you see this message for each sample, run `fasterq-dump.sh`.
+Once you see this message for all samples, run `fasterq-dump.sh`.
 
 ```shell
 sbatch fasterq-dump.sh

@@ -10,7 +10,26 @@ then
   module load sra-toolkit/3.0.9
 fi
 
-script_path=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
-cp "${script_path}/samplesheet.csv" .
-awk -F ',' 'NR > 1 {print $8}' samplesheet.csv | parallel -t prefetch
-awk -F ',' 'NR > 1 {print $8}' samplesheet.csv | xargs -L 1 vdb-validate 2>&1 | grep Database
+samplesheet=${1:-samplesheet.csv}
+
+# Validating arguments.
+if ! [[ -f "$samplesheet" ]]
+then
+  >&2 echo "Error: samplesheet file '$samplesheet' does not exists."
+  usage
+  exit 1
+fi
+
+srr_column=$(awk -F ',' \
+    'NR == 1 {for (i = 1; i <= NF; i++) if ($i == "srr") {print i; exit(0)}}' \
+    "$samplesheet")
+if [[ -z "$srr_column" ]]
+then
+  >&2 echo "Error: no 'srr' column found in samplesheet $samplesheet."
+  exit 1
+fi
+
+awk -F ',' -v srr_column="$srr_column" 'NR > 1 {print $srr_column}' "$samplesheet" \
+    | parallel -t prefetch
+awk -F ',' -v srr_column="$srr_column" 'NR > 1 {print $srr_column}' "$samplesheet" \
+    | xargs -L 1 vdb-validate 2>&1 | grep Database
