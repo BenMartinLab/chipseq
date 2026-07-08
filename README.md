@@ -6,25 +6,31 @@ To install the scripts on Alliance Canada servers and download genomes, see [INS
 
 ### Steps
 
-1. [Transfer data to scratch](#Transfer-data-to-scratch)
+1. [Samplesheet](#Samplesheet)
+2. [Transfer data to scratch](#Transfer-data-to-scratch)
    1. [Download test data (Optional)](#Download-test-data-Optional)
-2. [Prepare working environment](#Prepare-working-environment)
+3. [Prepare working environment](#Prepare-working-environment)
    1. [Set additional variables](#Set-additional-variables)
-3. [Run the nf-core pipeline](#Run-the-nf-core-pipeline)
-4. [Computing scale factors](#Computing-scale-factors)
-5. [Fragment counts](#Fragment-counts)
-6. [Genome coverage](#Genome-coverage)
-7. [Split BAM (Optional)](#Split-BAM-Optional)
+4. [Run the nf-core pipeline](#Run-the-nf-core-pipeline)
+5. [Computing scale factors](#Computing-scale-factors)
+6. [Fragment counts](#Fragment-counts)
+7. [Genome coverage](#Genome-coverage)
+8. [Split BAM (Optional)](#Split-BAM-Optional)
+
+## Samplesheet
+
+See [Samplesheet for ChIP-seq pipeline](https://nf-co.re/chipseq/2.1.0/docs/usage/#samplesheet-input) for details.
+
+[Here is an example of a samplesheet file](samplesheet.csv)
 
 ## Transfer data to scratch
 
 You will need to transfer the following files on the server in the `scratch` folder.
 
+* Samplesheet file.
 * FASTQ files.
 * Genome files (FASTA and GTF). See [Genomes](https://github.com/BenMartinLab/genomes).
     * Copy `bowtie2` folder for your genome.
-* Samplesheet file. See [Samplesheet for ChIP-seq pipeline](https://nf-co.re/chipseq/2.1.0/docs/usage/#samplesheet-input)
-    * [Here is an example of a samplesheet file](samplesheet.csv)
 * Any additional files that are needed for your analysis.
 
 There are many ways to transfer data to the server. Here are some suggestions.
